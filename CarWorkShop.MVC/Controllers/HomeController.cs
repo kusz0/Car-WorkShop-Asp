@@ -17,7 +17,6 @@ public class HomeController : Controller
     {
         return View();
     }
-
     public IActionResult Privacy()
     {
         var model = new List<Person>()
@@ -32,6 +31,20 @@ public class HomeController : Controller
                 FirstName = "Iza",
                 LastName = "Sadowska"
             }
+        };
+        return View(model);
+    }
+    public IActionResult About()
+    {
+        var model = new AboutModel()
+        {
+            Title = "CarWorkShop application",
+            Description = "Get your car fixed fast with trusted mechanics nearby",
+            Tags = new List<string>
+            {
+                "CarRepair", "AutoService","VehicleMaintenance","GarageApp","CarCare"
+            }
+            
         };
 
         return View(model);
