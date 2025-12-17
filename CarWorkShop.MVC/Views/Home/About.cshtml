@@ -3,9 +3,10 @@
 @{
 
 
+
 }
 <h1>@Model.Title</h1>
-<h3>@Model.Description</h3>
+<div class="alert alert-primary" role="alert">@Model.Description</div>
 <h4>Tags:</h4>
 <ul>
 @foreach(string tag in Model.Tags)
@@ -13,3 +14,20 @@
     <li>@tag</li>    
 }
 </ul>
+<div class="container text-center">
+    <div class="row">
+        <div class="col-md-4 border">
+            column
+        </div>
+        <div class="col-md-1 border">
+            column
+        </div>
+        <div class="col-md-1 border">
+            column
+        </div>
+        <div class="col-md-6 border">
+            column
+        </div>
+
+    </div>
+</div>
