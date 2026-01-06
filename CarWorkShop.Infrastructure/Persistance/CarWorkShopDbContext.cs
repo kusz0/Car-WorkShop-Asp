@@ -13,7 +13,14 @@ namespace CarWorkShop.Infrastructure.Persistance
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;DataBase=CarWorkShopDb;Trusted_Connection=True;");
+
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Entity.Entities.CarWorkShop>().OwnsOne(c => c.ContactDetails);
+        }
+    
     }
 }
