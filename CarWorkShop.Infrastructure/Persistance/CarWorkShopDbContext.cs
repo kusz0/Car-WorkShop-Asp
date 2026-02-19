@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using CarWorkShop.Entity.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace CarWorkShop.Infrastructure.Persistance
     public class CarWorkShopDbContext : DbContext
     {
         public DbSet<Entity.Entities.CarWorkShop> CarWorkShops { get; set; }
+        public DbSet<CarWorkShopContactDetails> CarWorkShopContactDetails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

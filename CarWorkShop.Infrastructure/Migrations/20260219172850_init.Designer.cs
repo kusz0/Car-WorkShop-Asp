@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarWorkShop.Infrastructure.Migrations
 {
     [DbContext(typeof(CarWorkShopDbContext))]
-    [Migration("20260106203430_Init")]
-    partial class Init
+    [Migration("20260219172850_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -73,7 +73,7 @@ namespace CarWorkShop.Infrastructure.Migrations
 
                             b1.HasKey("CarWorkShopId");
 
-                            b1.ToTable("CarWorkShops");
+                            b1.ToTable("CarWorkShopContactDetails");
 
                             b1.WithOwner()
                                 .HasForeignKey("CarWorkShopId");

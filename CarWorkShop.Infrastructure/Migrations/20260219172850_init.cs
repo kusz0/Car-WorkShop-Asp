@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CarWorkShop.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,21 +20,41 @@ namespace CarWorkShop.Infrastructure.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ContactDetails_PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactDetails_Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactDetails_City = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ContactDetails_PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EncodedName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CarWorkShops", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "CarWorkShopContactDetails",
+                columns: table => new
+                {
+                    CarWorkShopId = table.Column<int>(type: "int", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Street = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    City = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CarWorkShopContactDetails", x => x.CarWorkShopId);
+                    table.ForeignKey(
+                        name: "FK_CarWorkShopContactDetails_CarWorkShops_CarWorkShopId",
+                        column: x => x.CarWorkShopId,
+                        principalTable: "CarWorkShops",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "CarWorkShopContactDetails");
+
             migrationBuilder.DropTable(
                 name: "CarWorkShops");
         }

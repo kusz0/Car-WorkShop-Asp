@@ -70,7 +70,7 @@ namespace CarWorkShop.Infrastructure.Migrations
 
                             b1.HasKey("CarWorkShopId");
 
-                            b1.ToTable("CarWorkShops");
+                            b1.ToTable("CarWorkShopContactDetails");
 
                             b1.WithOwner()
                                 .HasForeignKey("CarWorkShopId");
