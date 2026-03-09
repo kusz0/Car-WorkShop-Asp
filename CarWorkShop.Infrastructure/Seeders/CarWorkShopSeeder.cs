@@ -15,6 +15,28 @@ namespace CarWorkShop.Infrastructure.Seeders
             _dbContext = dbContext;
         }
 
-
+        public async Task Seed()
+        {
+            if(await _dbContext.Database.CanConnectAsync())
+            {
+                if(!_dbContext.CarWorkShops.Any())
+                {
+                    var mazdaAso = new Entity.Entities.CarWorkShop() {
+                        Id = 1,
+                        Name = "Mazda",
+                        Description="Authorized mazda serwis full pro",
+                        ContactDetails = new()
+                        {
+                            PhoneNumber = "+48999222444",
+                            City = "Warszawa",
+                            Street = "Szeroka",
+                            PostalCode = "22-555"
+                        }
+                    };
+                    _dbContext.CarWorkShops.Add(mazdaAso);
+                    await _dbContext.SaveChangesAsync();
+                }
+            }
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace CarWorkShop.Entity.Entities
         public required int Id {  get; set; }
         public string Name { get; set; } = default!;
         public string? Description { get; set; }
+        public string? About { get; set; }
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public CarWorkShopContactDetails ContactDetails { get; set; } = default!;
         public string EncodedName { get; private set; } = default!;
