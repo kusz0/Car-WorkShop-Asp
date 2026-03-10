@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CarWorkShop.Entity.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,9 +9,14 @@ namespace CarWorkShop.Application.Services
 {
     internal class CarWorkshopService
     {
-        public async Task Create() 
+        private readonly ICarWorkshorRepository _carWorkshorRepository;
+        public CarWorkshopService(ICarWorkshorRepository carWorkshorRepository)
         {
-            await return Task.CompletedTask;
+            _carWorkshorRepository = carWorkshorRepository;
+        }
+        public async Task Create(Entity.Entities.CarWorkShop carWorkshop) 
+        {
+               
         }
     }
 }
