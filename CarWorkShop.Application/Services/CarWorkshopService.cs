@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarWorkShop.Application.Services
 {
-    internal class CarWorkshopService
+    internal class CarWorkshopService : ICarWorkshopService
     {
         private readonly ICarWorkshorRepository _carWorkshorRepository;
         public CarWorkshopService(ICarWorkshorRepository carWorkshorRepository)
@@ -17,6 +17,7 @@ namespace CarWorkShop.Application.Services
         public async Task Create(Entity.Entities.CarWorkShop carWorkshop) 
         {
                
+            await _carWorkshorRepository.Create(carWorkshop);
         }
     }
 }
